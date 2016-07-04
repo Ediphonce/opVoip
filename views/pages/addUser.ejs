@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+    <% include ../partials/adHead %>
+    
+    <title>Share Screen | Online Presentation </title>
+</head>
+<body>
+<% include ../partials/header %>
+<% include ../partials/sideNav %>
+
+ <div class="content-wrapper">
+ <div class="col-lg-12"> 
+ <h1 class="heading">Add a New User</h1>
+ </div>
+ <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <form action="/add-user" method="post">
+                    <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    
+                    </div>
+                    <br/><br/>
+                                <div class="col-lg-12">
+                                       <% if(feedback) { %>
+                        <div class="alert alert-<%= feedbackType %> alert-dismissible fade in" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <%= message %>
+                        </div>
+                        <% } %>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="firstname" placeholder="Enter Firstname" required="required"
+                                        <% if(feedback) { %>
+                                        value="<%= inFirstname %>"
+                                        <% } %>
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="lastname" placeholder="Enter Lastname" required="required"
+                                        <% if(feedback) { %>
+                                        value="<%= inLastname %>"
+                                        <% } %>
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                  <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Enter Email" required="required" 
+                                        <% if(feedback) { %>
+                                        value="<%= email %>"
+                                        <% } %>
+                                        />
+                                    </div> 
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="department" placeholder="Enter Department" required="required" <% if(feedback) { %>
+                                        value="<%= inDept %>"
+                                        <% } %>
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password" placeholder="Enter Password" required="required" 
+                                        <% if(feedback) { %>
+                                        value="<%= password %>"
+                                        <% } %>
+                                        />
+                                    </div> 
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="passwordConfirmation" placeholder="Confirm Password" required="required"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" class="form-control btn btn-primary" name="addUser" value="Add User">
+                                        <input type="reset" class="form-control" name="cancel" value="Clear Fields">
+                                    </div>
+                                </div>
+                            </div> <!-- row -->
+                </form>
+            </div>
+ </div>
+
+ <% include ../partials/adScripts %>
+</body>
+</html>

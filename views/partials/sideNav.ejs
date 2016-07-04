@@ -1,0 +1,73 @@
+	<main class="cd-main-content">
+		<nav class="cd-side-nav">
+			<ul>
+				<li class="cd-label">Main</li>
+				<li class="has-children overview">
+					<a href="#0"><span class="glyphicon glyphicon-dashboard"></span>
+				&nbsp;Overview</a>
+					
+					<ul>
+						<li><a href="#0">Instractions</a></li>
+						<!-- <li><a href="#0">Category 1</a></li>
+						<li><a href="#0">Category 2</a></li> -->
+					</ul>
+				</li>
+				<!-- <li class="has-children comments">
+					<a href="#0">Comments</a>
+					
+					<ul>
+						<li><a href="#0">All Comments</a></li>
+						<li><a href="#0">Edit Comment</a></li>
+						<li><a href="#0">Delete Comment</a></li>
+					</ul>
+				</li> -->
+			</ul>
+
+			
+			
+			<ul>		
+				<li class="cd-label">Presentation</li>
+				<li class="webcam-allow">
+					 <button id="allow-webcam" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Enable Your Webcam">
+				<img src="images/webcam.png" /> Webcam
+						</button>
+				</li>
+
+				<li class="mic-enable">
+					<button id="allow-mic" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Enable Your Microphone">
+				<img src="images/microphone.png" /> Microphone
+						</button>
+					
+				</li>
+				<li class="screen-share">
+					 <button id="allow-screen" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Enable Your Screen">
+				<img src="images/screen.png" /> Screen
+						</button>
+				</li>
+				<li class="files-share">
+					 <button id="share-files" type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="right" title="Select and Share Your Files">
+				<img src="images/share-files.png" /> Files
+						</button>
+				</li>
+			
+			</ul>
+
+			<ul>
+				<li class="cd-label">Information</li>
+			<li><a href="/presentation">Presentation</a></li>	
+			<li><a href="/view-sesssions">View Sessions</a></li>
+			<li class="action-btn users-list" title="Click to view all shared screens and videos!"> <a href="#"><span class="glyphicon glyphicon-user"></span>
+			Users&nbsp;<span class="numbers-of-users badge badge-default">0</span></a>
+            
+				</li>
+			</ul>
+			<% if(role.localeCompare('admin') == 0 ){ %>
+			<ul>
+				<li class="cd-label">Administrator</li>
+				<li class="users"><a href="/add-user"><span class="glyphicon glyphicon-user"></span>
+				&nbsp;Add User</a></li>
+				<li class=""><a href="/view-users"><span class="glyphicon glyphicon-eye-open"></span>
+				&nbsp;View Users</a></li>
+			</ul>
+			<% } %>
+		</nav>

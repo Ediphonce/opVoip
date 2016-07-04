@@ -1,0 +1,96 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/head %>
+<!-- /.website title -->
+<title>Online Presentation</title>  
+ </head>
+<body data-spy="scroll" data-target="#navbar-scroll">
+
+<!-- /.preloader -->
+<div id="preloader"></div>
+<div id="top"></div>
+
+<!-- /.parallax full screen background image -->
+<div class="fullscreen landing parallax" style="background-image:url('images/conference_room-wallpaper-1152x768.jpg');" data-img-width="2000" data-img-height="1333" data-diff="100">
+	
+	<div class="overlay">
+		<div class="container">
+			<div class="row">
+			<% if(logedIn){ %>
+			<div class="pull-right">
+					<span class="label label-info">
+						Logged in as <%= firstname %> <%= lastname %>
+					</span> &nbsp;&nbsp;&nbsp;&nbsp;
+					<a class="logout-link" href="/logout">Logout</a>
+					</div>
+			<%	} %>
+				<div class="col-md-7">
+				
+					<!-- /.logo -->
+					<div class="logo wow fadeInDown"> <a href="/"><img src="images/logo.png" alt="logo"></a></div>
+
+					<!-- /.main title -->
+						<h1 class="wow fadeInLeft">
+						Online Presentation With VoIP and Screen Sharing
+						</h1>
+
+					<!-- /.header paragraph -->
+					<div class="landing-text wow fadeInUp">
+				<p> This Application Enables a single user to broadcast his screen and Voice to Multiple connected Users, it enables all connected users to participate in the presentation Session in Real Time Communication (RTC)</p>
+					</div>				  
+
+					<!-- /.header button -->
+					<div class="head-btn wow fadeInLeft">
+						<a href="/share-screen" class="btn-primary">Share Screen</a>
+						<a href="/join-session" class="btn-default">Join Session</a>
+					</div>
+	
+		  
+
+				</div> 
+				
+				<!-- /.login form -->
+				<div class="col-md-5">
+					<div class="signup-header wow fadeInUp">
+						<h3 class="form-title text-center">GET STARTED</h3>
+						<% if(feedback) { %>
+						<div class="alert alert-<%= feedbackType %> alert-dismissible fade in" role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								<span class="sr-only">Close</span>
+							</button>
+							<%= message %>
+						</div>
+						<% } %>
+						<form class="form-header" action="/presentation" role="form" method="POST" id="#">
+						<input type="hidden" name="u" value="503bdae81fde8612ff4944435">
+						<input type="hidden" name="id" value="bfdba52708">
+							
+							<div class="form-group">
+								<input class="form-control input-lg" name="email" id="email" type="email" placeholder="Email address"
+								<% if(feedback) {%> value="<%= email %>"<% } %> required <% if(logedIn){ %> disabled <% } %> />
+							</div>
+                                                <div class="form-group">
+								<input class="form-control input-lg" name="password" id="name" type="password" placeholder="Your Password"<% if(feedback) {%> value="<%= password %>"<% } %> required <% if(logedIn){ %> disabled <% } %> />
+							</div>
+							<div class="form-group last">
+								<input type="submit" class="btn btn-warning btn-block btn-lg" value="LOGIN" <% if(logedIn){ %> disabled <% } %> />
+							</div>
+                                                <p class="privacy text-center"> <a href="#">Forgot Email/Password</a>.</p>
+						</form>
+					</div>				
+				
+				</div>
+			</div>
+		</div> 
+	</div> 
+</div>
+
+ <!-- /.footer -->
+<footer id="footer">
+<% include ../partials/footer %>
+</footer>
+<% include ../partials/scripts %>
+</body>
+</html>

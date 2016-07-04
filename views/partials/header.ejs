@@ -1,0 +1,25 @@
+	<header class="cd-main-header">
+		<a href="/" class="cd-logo"><img width="120px" src="images/logo.png" alt="Logo"></a>
+		<a href="#0" class="cd-nav-trigger">Menu<span></span></a>
+
+		<nav class="cd-nav">
+			<ul class="cd-top-nav">
+				<li>
+           <button class="btn btn-secondary" id="settings" title="Customize Options">Settings</button>
+				</li>
+				<li class="has-children account">
+					<a href="#0">
+						<img src="img/cd-avatar.png" alt="avatar">
+						<%= firstname %>&nbsp;<%= lastname %>
+					</a>
+
+					<ul>
+
+						<li><a href="/account">My Account</a></li>
+						<li><a href="/edit-account">Edit Account</a></li>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
+	</header> <!-- .cd-main-header -->

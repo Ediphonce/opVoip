@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<% include ../partials/adHead %>
+  	
+	<title>Share Screen | Online Presentation </title>
+	<style>
+        video {
+            object-fit: fill;
+            width: 100%;
+            max-width: 100%;
+        }
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }
+        
+    </style> 
+</head>
+<body>
+<% include ../partials/header %>
+<% include ../partials/sideNav %>
+		<div class="content-wrapper">
+		<br/>
+                       <div class="row">
+                        			<div class="col-lg-6">
+                        				<div class="input-group">
+                        					<input type="text" class="form-control" id="roomId" placeholder="Enter Room ID" /><span class="input-group-btn">
+                        						<button class="btn btn-primary" type="button" id="openSessionButton">Open Room</button>
+                                                <<button type="button" class="btn btn-secondary">
+                                                    &nbsp;&nbsp;
+                                                </button>
+                                                <button class="btn btn-primary" type="button" id="joinSessionButton">Join Room</button>
+                        					</span>
+                        				</div>
+                        			</div><br/>
+
+                        	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        	<br/>
+                        		 <div class="thumbnail">
+                        <video id="video-preview" controls loop></video>
+                             </div>
+                        	</div>
+                        	</div>
+		</div> <!-- .content-wrapper -->
+	</main> <!-- .cd-main-content -->
+<% include ../partials/adScripts %>
+<script src="//cdn.webrtc-experiment.com/RTCMultiConnection.js"></script>
+<script type="text/javascript">
+	var connection = new RTCMultiConnection();
+
+// by default, initiator starts one-way screen
+connection.session = {
+    screen: true,
+    audio: true,
+    broadcast : true
+};
+var roomId = document.getElementById('roomId').value;
+var videoPreview = document.getElementById('video-preview');
+connection.onstream = function(event) {
+	
+                videoPreview.src = URL.createObjectURL(event.stream);
+                videoPreview.play();
+    //document.body.appendChild(e.mediaElement);
+    		videoPreview.userid = event.userid;
+            console.log("USERID IS : " + event.userid);
+
+                if(event.type === 'local') {
+                    videoPreview.muted = true;
+                }
+
+               
+};
+
+document.querySelector('#openSessionButton').onclick = function() {
+   var sessDiscription = connection.open({
+    sessionid : roomId
+   });
+    console.log('THE SESSION ID IS : ' + sessDiscription.sessionId);
+};
+document.querySelector('#joinSessionButton').onclick = function() {
+    connection.connect();
+    connection.join(roomId);
+};
+    console.log('Channel ID : ' + connection.channel);
+// if participant wants, he can add his screen at runtime!
+// document.querySelector('#shareScreen').onclick = function() {
+//     connection.addStream({
+//         screen: true,
+//         oneway: true
+//     });
+// };
+</script>
+</body>
+</html>
